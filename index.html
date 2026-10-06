@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Светлана Ключникова — Senior Product Designer</title>
+<meta name="description" content="Портфолио Senior Product Designer: комплексные B2B/B2C-системы и данные.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#141416;
+    --surface:#1C1D20;
+    --surface2:#212226;
+    --ink:#F2F3F1;
+    --muted:#8B8E93;
+    --line:#2A2B2E;
+    --accent:#22D3EE;
+    --accent-dim:rgba(34,211,238,0.12);
+    --accent-ink:#0A1A1F;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.62; -webkit-font-smoothing:antialiased;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--accent); color:var(--accent-ink);}
+
+  nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:50; background:rgba(20,20,22,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; height:64px;}
+  .nav-name{font-weight:700; font-size:15px;}
+  .nav-right{display:flex; align-items:center; gap:10px;}
+  .nav-cta{font-weight:600; font-size:13.5px; padding:9px 18px; background:var(--accent); color:var(--accent-ink); border-radius:100px;}
+  .cases-menu{position:relative;}
+  .cases-trigger{
+    display:flex; align-items:center; gap:6px; font-size:13.5px; color:var(--ink); font-weight:500;
+    padding:9px 16px; border:1px solid var(--line); border-radius:100px; cursor:pointer; background:none;
+  }
+  .cases-trigger:hover{border-color:var(--accent);}
+  .cases-trigger .chev{font-size:10px; transition:transform .15s ease; color:var(--muted);}
+  .cases-menu.open .cases-trigger .chev{transform:rotate(180deg);}
+  .cases-dropdown{
+    position:absolute; top:calc(100% + 8px); left:0; min-width:220px;
+    background:var(--surface2); border:1px solid var(--line); border-radius:12px; padding:6px;
+    display:none; flex-direction:column; box-shadow:0 12px 32px rgba(0,0,0,0.4); z-index:60;
+  }
+  .cases-menu.open .cases-dropdown{display:flex;}
+  .cases-dropdown a{font-size:13.5px; padding:10px 12px; border-radius:8px; color:var(--muted);}
+  .cases-dropdown a:hover{background:var(--surface); color:var(--ink);}
+  @media (max-width:640px){.cases-trigger span.label{display:none;}}
+
+  .intro{padding:72px 0 60px;}
+  .pill{display:inline-block; font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--accent); background:var(--accent-dim); padding:6px 14px; border-radius:100px; margin-bottom:24px; border:1px solid rgba(34,211,238,0.25);}
+  h1{font-weight:800; font-size:42px; line-height:1.25; max-width:680px; margin-bottom:22px; letter-spacing:-0.015em;}
+  .intro p{font-size:16px; color:var(--muted); max-width:560px; margin-bottom:8px;}
+  .contact-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:28px;}
+  .contact-row a{font-size:13.5px; font-weight:500; padding:8px 16px 9px; border:1px solid var(--line); border-radius:100px; transition:border-color .15s ease; line-height:1;}
+  .contact-row a:hover{border-color:var(--accent); color:var(--accent);}
+  .contact-row a.primary{background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:600;}
+
+  .case{padding:80px 0; border-top:1px solid var(--line);}
+  .case-context{font-family:'IBM Plex Mono'; font-size:12px; color:var(--muted); letter-spacing:0.03em; margin-bottom:14px;}
+  .case h2{font-weight:800; font-size:28px; margin-bottom:14px; letter-spacing:-0.01em;}
+  .case-subtitle{font-size:16.5px; color:var(--ink); max-width:640px; margin-bottom:32px; font-weight:400; line-height:1.55;}
+  .case-subtitle .hl{color:var(--accent); font-weight:600;}
+
+  .meta-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:40px;}
+  .meta-item{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 16px; flex:1; min-width:140px;}
+  .meta-label{font-family:'IBM Plex Mono'; font-size:10px; color:var(--muted); margin-bottom:4px;}
+  .meta-value{font-size:13px; font-weight:600;}
+
+  .screen-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:48px;}
+  .screen-grid.cols-4{grid-template-columns:repeat(4,1fr);}
+  @media (max-width:900px){.screen-grid.cols-4{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:640px){.screen-grid{grid-template-columns:1fr;}}
+  .screen-item{background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden;}
+  .screen-item img{width:100%; display:block;}
+  .screen-caption{font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--muted); padding:10px 14px; border-top:1px solid var(--line);}
+
+  .case-block{margin-bottom:32px;}
+  .case-block-label{font-family:'IBM Plex Mono'; font-weight:500; font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;}
+  .hmw-list{list-style:none;}
+  .hmw-list li{font-size:15px; padding-left:22px; position:relative; margin-bottom:10px; line-height:1.55; color:var(--ink);}
+  .hmw-list li::before{content:'→'; position:absolute; left:0; color:var(--accent);}
+  .case-text{font-size:14.5px; color:var(--muted); max-width:640px; line-height:1.7;}
+
+  .impact-card{
+    background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent);
+    border-radius:14px; padding:30px 32px; display:flex; align-items:center; gap:22px; flex-wrap:wrap;
+  }
+  .impact-num{font-weight:800; font-size:40px; color:var(--accent);}
+  .impact-label{font-size:14px; color:var(--muted); max-width:400px; line-height:1.55;}
+
+  .lesson-box{border-left:2px solid var(--line); padding-left:16px; font-size:13.5px; color:var(--muted); font-style:italic; max-width:600px;}
+
+  .other-work{padding:52px 0; border-top:1px solid var(--line);}
+  .other-title{font-weight:700; font-size:14px; margin-bottom:20px; color:var(--muted);}
+  .other-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px;}
+  @media (max-width:760px){.other-grid{grid-template-columns:repeat(2,1fr);}}
+  .other-card{background:var(--surface); border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .other-card img{width:100%; display:block; aspect-ratio:4/3; object-fit:cover;}
+  .other-card-label{font-size:12px; padding:10px 12px; color:var(--ink); font-weight:500;}
+  .other-list{display:flex; flex-wrap:wrap; gap:10px;}
+  .other-chip{font-size:12.5px; color:var(--muted); border:1px solid var(--line); padding:8px 14px; border-radius:100px;}
+
+  footer{padding:64px 0 48px; border-top:1px solid var(--line);}
+  .footer-title{font-weight:800; font-size:26px; margin-bottom:22px; max-width:480px;}
+  .foot-meta{font-size:12px; color:var(--muted); margin-top:36px;}
+
+  @media (max-width:640px){
+    h1{font-size:28px;}
+    .case h2{font-size:22px;}
+    .impact-num{font-size:32px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name">Светлана К.</div>
+    <div class="nav-right">
+      <div class="cases-menu" id="casesMenu">
+        <button class="cases-trigger" onclick="document.getElementById('casesMenu').classList.toggle('open')">
+          <span class="label">Кейсы</span><span class="chev">▾</span>
+        </button>
+        <div class="cases-dropdown">
+          <a href="#trips">Командировки</a>
+          <a href="#debts">Взаиморасчёты</a>
+          <a href="#energy">Энергоресурсы</a>
+          <a href="#sheets">Ведомости</a>
+          <a href="#booking">Бронирование</a>
+          <a href="#employer">ЛК работодателя</a>
+          <a href="#topsports">Top Sports · ЛК дилера</a>
+        </div>
+      </div>
+      <a href="https://t.me/tabas_ska" target="_blank" rel="noopener" class="nav-cta">Написать</a>
+    </div>
+  </div>
+</nav>
+
+<section class="intro">
+  <div class="wrap">
+    <span class="pill">Senior Product Designer</span>
+    <h1>Продуктовый дизайнер с фокусом на комплексные системы и данные.</h1>
+    <p>8 лет в B2B и B2C. Веду дизайн-направление университетской платформы масштаба Госуслуг — от исследования до дизайн-ревью готовой реализации.</p>
+    <p>Ниже — семь кейсов, которые лучше всего показывают, как я работаю.</p>
+    <div class="contact-row">
+      <a href="mailto:svetkluch@yandex.ru" class="primary">svetkluch@yandex.ru</a>
+      <a href="tel:+79270078721">+7 927 007 87 21</a>
+      <a href="https://t.me/tabas_ska" target="_blank" rel="noopener">Telegram · @tabas_ska</a>
+      <a href="https://www.behance.net/tabassky" target="_blank" rel="noopener">Behance</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE 1 — КОМАНДИРОВКИ ============ -->
+<section class="case" id="trips">
+  <div class="wrap">
+    <div class="case-context">ЛИЧНЫЙ КАБИНЕТ СОТРУДНИКА</div>
+    <h2>Командировки</h2>
+    <p class="case-subtitle">Оформление без единого личного визита — <span class="hl">от заявки до закрывающих документов, полностью в онлайне</span>.</p>
+
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">роль</div><div class="meta-value">Ведущий продуктовый дизайнер</div></div>
+      <div class="meta-item"><div class="meta-label">команда</div><div class="meta-value">Дизайнер, тестировщик, аналитик, frontend- и backend-разработчик</div></div>
+      <div class="meta-item"><div class="meta-label">год</div><div class="meta-value">2026</div></div>
+      <div class="meta-item"><div class="meta-label">платформа</div><div class="meta-value">Web + мобильное приложение</div></div>
+    </div>
+
+    <div class="screen-grid" style="grid-template-columns:repeat(2,1fr); max-width:620px;">
+        <div class="screen-item"><img src="images/trips-list-v3.png" alt="Список заявок со статусами «В работе» и «Черновик»"><div class="screen-caption">Статусная модель — каждая заявка показывает, на каком этапе согласования она находится</div></div>
+        <div class="screen-item"><img src="images/trips-form-v3.png" alt="Форма оформления командировки с типом поездки, датами и оплатой выходных"><div class="screen-caption">Форма оформления — тип поездки, даты, оплата нерабочих дней в одном шаге</div></div>
+    </div>
+
+     <div class="screen-item" style="margin-bottom:48px;"><img src="images/trips-4.png" alt="Заявка на командировку — все согласовано"></div>
+
+    <div class="case-block">
+      <div class="case-block-label">Проблема</div>
+      <ul class="hmw-list">
+        <li>Как бы мы могли убрать необходимость личного визита к руководителю для согласования командировки?</li>
+        <li>Как бы мы могли сделать статус заявки понятным на каждом шаге, а не просто «в обработке»?</li>
+      </ul>
+    </div>
+
+    <div class="case-block">
+      <div class="case-block-label">Исходное состояние</div>
+      <p class="case-text">Процесс существовал только офлайн: бумажная заявка, личная подпись руководителя, отдельный визит в бухгалтерию для согласования оплаты и получения закрывающих документов.</p>
+    </div>
+
+    <div class="case-block">
+      <div class="case-block-label">Процесс</div>
+      <p class="case-text">Разобрала реальный процесс согласования вместе с бухгалтерией и кадровой службой. Спроектировала статусную модель из пяти состояний, которая отражает фактический workflow командировки от подачи до расчёта.</p>
+    </div>
+
+    <div class="case-block">
+      <div class="case-block-label">Влияние на бизнес</div>
+      <div class="impact-card">
+        <div class="impact-num">0</div>
+        <div class="impact-label">очных обращений к руководителю и визитов в бухгалтерию — весь цикл от заявки до закрывающих документов проходит в личном кабинете.</div>
+      </div>
+      <div class="impact-card" style="margin-top:14px;">
+        <div class="impact-num">5</div>
+        <div class="impact-label">прозрачных статусов согласования вместо одного «в обработке»: сотрудник видит, одобрена заявка, отклонена или ещё в работе — без звонков и уточнений.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE 2 — ВЗАИМОРАСЧЁТЫ ============ -->
+<section class="case" id="debts">
+  <div class="wrap">
+    <div class="case-context">ЛИЧНЫЙ КАБИНЕТ СТУДЕНТА</div>
+    <h2>Взаиморасчёты</h2>
+    <p class="case-subtitle">Прозрачная задолженность и оплата в несколько шагов — <span class="hl">40 % задолженностей закрыто через сервис за первые 6 месяцев</span>.</p>
+
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">роль</div><div class="meta-value">Ведущий продуктовый дизайнер</div></div>
+      <div class="meta-item"><div class="meta-label">команда</div><div class="meta-value">Дизайнер, тестировщик, аналитик, frontend- и backend-разработчик</div></div>
+      <div class="meta-item"><div class="meta-label">год</div><div class="meta-value">2026</div></div>
+      <div class="meta-item"><div class="meta-label">платформа</div><div class="meta-value">Мобильное приложение</div></div>
+    </div>
+
+    <div class="screen-grid">
+        <div class="screen-item"><img src="images/debts-main.jpg" alt="Главный экран с виджетом долга"><div class="screen-caption">Главный экран с виджетом долга</div></div>
+        <div class="screen-item"><img src="images/debts-list.jpg" alt="Список активных задолженностей"><div class="screen-caption">Список активных задолженностей</div></div>
+        <div class="screen-item"><img src="images/debts-qr.jpg" alt="Оплата по QR-коду"><div class="screen-caption">Оплата по QR-коду</div></div>
+    </div>
+
+    <div class="case-block">
+      <div class="case-block-label">Проблема</div>
+      <ul class="hmw-list">
+        <li>Как бы мы могли помочь студенту увидеть точную сумму долга без похода в бухгалтерию?</li>
+        <li>Как бы мы могли снизить число просроченных оплат за проживание в общежитии?</li>
+      </ul>
+    </div>
+
+    <div class="case-block">
+      <div class="case-block-label">Исходное состояние</div>
+      <p class="case-text">Задолженность отслеживалась вручную бухгалтерией; студенты узнавали о долге по объявлению на вахте общежития или случайно, уже после начисления пени.</p>
+    </div>
+
+    <div class="case-block">
+      <div class="case-block-label">Процесс</div>
+      <p class="case-text">Спроектировала виджет задолженности прямо на главном экране. Для оплаты — QR-код с реквизитами, который можно отсканировать в любом банковском приложении, вместо визита в кассу.</p>
+    </div>
+
+    <div class="case-block">
+      <div class="case-block-label">Влияние на бизнес</div>
+      <div class="impact-card">
+        <div class="impact-num">40 %</div>
+        <div class="impact-label">задолженностей закрыто через сервис за первые 6 месяцев — без очередей в бухгалтерию и ручного расчёта.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE 3 — УЧЁТ ЭНЕРГОРЕСУРСОВ ============ -->
+<section class="case" id="energy">
+  <div class="wrap">
+    <div class="case-context">ЛИЧНЫЙ КАБИНЕТ АДМИНИСТРАТОРА</div>
+    <h2>Учёт энергоресурсов</h2>
+    <p class="case-subtitle">Глобальная аналитика по 10+ зданиям — <span class="hl">единый инструмент финансового контроля вместо разрозненных данных</span>.</p>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">роль</div><div class="meta-value">Ведущий продуктовый дизайнер</div></div>
+      <div class="meta-item"><div class="meta-label">команда</div><div class="meta-value">Дизайнер, тестировщик, аналитик, frontend- и backend-разработчик</div></div>
+      <div class="meta-item"><div class="meta-label">год</div><div class="meta-value">2026</div></div>
+      <div class="meta-item"><div class="meta-label">платформа</div><div class="meta-value">Web</div></div>
+    </div>
+    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/energy-1.png" alt="Учёт электроэнергии — таблица счётчиков" style="width:100%; display:block;"></div>
+    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/energy-3.png" alt="Сводный график — стоимость 1 м² по зданиям, затраты по ЦФУ и статьям, детализация по зданию" style="width:100%; display:block;"></div>
+    <div class="case-block">
+      <div class="case-block-label">Проблема</div>
+      <ul class="hmw-list">
+        <li>Как бы мы могли связать данные по разным видам затрат — электричество, газ, охрана, клининг — с конкретными помещениями?</li>
+        <li>Как бы мы могли поддержать иерархию счётчиков (родительский → дочерние), которая нигде не была формализована?</li>
+      </ul>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Исходное состояние</div>
+      <p class="case-text">Данные по 10+ зданиям существовали разрозненно, без связи с помещениями и подразделениями и без единой аналитики — понять, кто сколько тратит, было невозможно.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Процесс</div>
+      <p class="case-text">Разобралась в реальной структуре учёта — счётчики оказались иерархическими, что нигде не было формализовано. Спроектировала структуру данных и интерфейс с нуля, связав иерархию счётчиков со справочником помещений.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Влияние на бизнес</div>
+      <div class="impact-card">
+        <div class="impact-num">10+</div>
+        <div class="impact-label">зданий объединены в одну систему учёта вместо разрозненных таблиц по каждому корпусу отдельно.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ CASE 4 — ЭЛЕКТРОННЫЕ ВЕДОМОСТИ ============ -->
+<section class="case" id="sheets">
+  <div class="wrap">
+    <div class="case-context">ЭЛЕКТРОННЫЙ ЖУРНАЛ · АТТЕСТАЦИОННЫЕ ВЕДОМОСТИ</div>
+    <h2>Электронные ведомости</h2>
+    <p class="case-subtitle">Кафедры перешли на цифровой формат добровольно — <span class="hl">ещё до официального приказа</span>.</p>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">роль</div><div class="meta-value">Ведущий продуктовый дизайнер</div></div>
+      <div class="meta-item"><div class="meta-label">команда</div><div class="meta-value">Дизайнер, тестировщик, аналитик, frontend- и backend-разработчик</div></div>
+      <div class="meta-item"><div class="meta-label">год</div><div class="meta-value">2026</div></div>
+      <div class="meta-item"><div class="meta-label">платформа</div><div class="meta-value">Web + мобильное приложение</div></div>
+    </div>
+    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/sheets-hero.jpg" style="width:100%; display:block;" alt="Электронные ведомости — десктоп и мобильная адаптация"></div>
+    <div class="case-block">
+      <div class="case-block-label">Проблема</div>
+      <ul class="hmw-list">
+        <li>Как бы мы могли избавить преподавателей от бумажных ведомостей, не потеряв контроль за процессом?</li>
+        <li>Как бы мы могли сделать переход на цифровой формат желанным, а не навязанным сверху?</li>
+      </ul>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Исходное состояние</div>
+      <p class="case-text">Оценки вносились в бумажные ведомости вручную, с риском ошибок при переносе и без прозрачности статуса для деканата.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Процесс</div>
+      <p class="case-text">Спроектировала цифровой workflow ведомости с пошаговым статусом — внесение оценок, закрытие ведомости, отправка в дирекцию, обработка — сохранив привычную для преподавателя логику работы.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Влияние на бизнес</div>
+      <p class="case-text" style="max-width:560px;">Кафедры перешли на новый формат сами, ещё до официального распоряжения — редкий сигнал доверия к продукту в консервативной структуре.</p>
+    </div>
+  </div>
+</section>
+<!-- ============ CASE 5 — БРОНИРОВАНИЕ АУДИТОРИЙ ============ -->
+<section class="case" id="booking">
+  <div class="wrap">
+    <div class="case-context">БРОНИРОВАНИЕ АУДИТОРИЙ</div>
+    <h2>Бронирование аудиторий</h2>
+    <p class="case-subtitle">Карта загруженности в реальном времени — <span class="hl">двойные брони устранены</span>.</p>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">роль</div><div class="meta-value">Ведущий продуктовый дизайнер</div></div>
+      <div class="meta-item"><div class="meta-label">команда</div><div class="meta-value">Дизайнер, тестировщик, аналитик, frontend- и backend-разработчик</div></div>
+      <div class="meta-item"><div class="meta-label">год</div><div class="meta-value">2026</div></div>
+      <div class="meta-item"><div class="meta-label">платформа</div><div class="meta-value">Мобильное приложение</div></div>
+    </div>
+    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/booking-hero.jpg" style="width:100%; display:block;" alt="Бронирование аудиторий — флоу подбора и заявки"></div>
+    <div class="case-block">
+      <div class="case-block-label">Проблема</div>
+      <ul class="hmw-list">
+        <li>Как бы мы могли устранить двойные брони, возникающие при ручном согласовании по звонкам?</li>
+        <li>Как бы мы могли дать деканату понятную картину занятости аудиторий без обзвона?</li>
+      </ul>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Исходное состояние</div>
+      <p class="case-text">Бронирование велось вручную по звонкам и бумажным заявкам — двойные брони и простой аудиторий были обычным делом.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Процесс</div>
+      <p class="case-text">Спроектировала подбор аудитории по фильтрам — дата, корпус, время, наличие проектора — с проверкой доступности в реальном времени, чтобы конфликт брони был виден сразу при подаче заявки, а не постфактум.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Влияние на бизнес</div>
+      <div class="impact-card">
+        <div class="impact-num">0</div>
+        <div class="impact-label">двойных броней — конфликт по времени виден сразу при подаче заявки, а не после того, как в аудиторию пришли два преподавателя одновременно.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ CASE 6 — ЛК РАБОТОДАТЕЛЯ ============ -->
+<section class="case" id="employer">
+  <div class="wrap">
+    <div class="case-context">ЛИЧНЫЙ КАБИНЕТ РАБОТОДАТЕЛЯ</div>
+    <h2>Личный кабинет работодателя</h2>
+    <p class="case-subtitle">Сервис трудоустройства при вузе — <span class="hl">+25 % выпускников нашли работу, 70 % студентов прошли стажировку</span>.</p>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">роль</div><div class="meta-value">Ведущий продуктовый дизайнер</div></div>
+      <div class="meta-item"><div class="meta-label">команда</div><div class="meta-value">Дизайнер, тестировщик, аналитик, frontend- и backend-разработчик</div></div>
+      <div class="meta-item"><div class="meta-label">год</div><div class="meta-value">2026</div></div>
+      <div class="meta-item"><div class="meta-label">платформа</div><div class="meta-value">Мобильное приложение</div></div>
+    </div>
+    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/employer-hero.jpg" style="width:100%; display:block;" alt="ЛК работодателя — возможности, главная, вакансии"></div>
+    <div class="case-block">
+      <div class="case-block-label">Проблема</div>
+      <ul class="hmw-list">
+        <li>Как бы мы могли дать работодателям простой инструмент размещения вакансий без отдельного онбординга?</li>
+        <li>Как бы мы могли показать студентам без опыта, что у них есть реальный шанс закрыть отклик?</li>
+      </ul>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Исходное состояние</div>
+      <p class="case-text">У работодателей не было единого канала для поиска студентов-стажёров на платформе; у отдела занятости — инструмента модерации вакансий и откликов.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Процесс</div>
+      <p class="case-text">Спроектировала личный кабинет работодателя с публикацией вакансий и системой откликов, плюс архив с историей закрытых позиций — работодатель и студент взаимодействуют напрямую, без посредников.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Влияние на бизнес</div>
+      <div class="impact-card">
+        <div class="impact-num">+25 %</div>
+        <div class="impact-label">рост трудоустройства выпускников — работодатели размещают вакансии напрямую в вузе, а студенты откликаются из личного кабинета.</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">70 %</div>
+        <div class="impact-label">студентов нашли стажировку и практику через сервис — без сторонних площадок и посредников.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ CASE 7 — TOP SPORTS · КОРЗИНА ПРЕДЗАКАЗА ============ -->
+<section class="case" id="topsports">
+  <div class="wrap">
+    <div class="case-context">B2B-ПОРТАЛ · CRM ДИЛЕРА</div>
+    <h2>Личный кабинет для дилеров</h2>
+    <p class="case-desc">B2B-портал для оптовой продажи экипировки для экстремальных видов спорта по всей России.</p>
+    <p class="case-subtitle">Ключевой экран — корзина оптового предзаказа: десятки позиций в одном окне <span class="hl">с условиями скидок, авансом и статусами поставки</span>.</p>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">роль</div><div class="meta-value">Продуктовый дизайнер</div></div>
+      <div class="meta-item"><div class="meta-label">команда</div><div class="meta-value">Дизайнер, аналитик, frontend- и backend-разработчик</div></div>
+      <div class="meta-item"><div class="meta-label">год</div><div class="meta-value">2021</div></div>
+      <div class="meta-item"><div class="meta-label">платформа</div><div class="meta-value">Web</div></div>
+    </div>
+    <div class="screen-item" style="margin-bottom:48px;"><img src="images/topsports-cart-v5.png" alt="Личный кабинет дилера Top Sports — корзина предзаказа с разделами по типу заказа, скидками и авансом"><div class="screen-caption">Корзина предзаказа — разделы по типу заказа, условия скидок и авансовая оплата</div></div>
+    <div class="screen-item" style="margin-bottom:48px;"><img src="images/topsports-crm-v1.png" alt="CRM дилера Top Sports — список контрагентов с фильтрами, суммой корзин и статусами доступа"><div class="screen-caption">CRM дилера — контрагенты с фильтрами, суммой корзин и уровнями доступа</div></div>
+    <div class="case-block">
+      <div class="case-block-label">Проблема</div>
+      <ul class="hmw-list">
+        <li>Как бы мы могли собрать оптовый предзаказ на десятки позиций в одном окне, не теряя контроль над наличием и сроками поставки?</li>
+        <li>Как бы мы могли показать условия скидок и авансовой оплаты прямо в корзине, а не в отдельном документе?</li>
+      </ul>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Исходное состояние</div>
+      <p class="case-text">Дилеры формировали предзаказ в Excel-бланках и согласовывали его по почте и телефону. Наличие, скидочные пороги и сроки поставки приходилось сверять вручную, уже после отправки заявки.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Процесс</div>
+      <p class="case-text">Спроектировала корзину предзаказа с разделением позиций по типу заказа — со склада и нет в наличии — и пошаговыми статусами наличия со сроками поставки. Встроила условия скидок по сумме заказа и авансовую схему оплаты прямо в экран, а для массового ввода позиций добавила выгрузку и загрузку бланка заказа.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">Влияние на бизнес</div>
+      <div class="impact-card">
+        <div class="impact-num">1</div>
+        <div class="impact-label">окно вместо Excel-бланков и переписки: дилер собирает предзаказ, видит скидки, аванс и сроки поставки и оформляет заказ прямо в корзине.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="other-work">
+  <div class="wrap">
+    <div class="other-title">Другие проекты</div>
+    <div class="other-list">
+      <a class="other-chip" href="https://dribbble.com/shots/16957446-Hunter-Map-Mobile-App" target="_blank" rel="noopener">Карта охотника ↗</a>
+      <a class="other-chip" href="https://topsports.ru" target="_blank" rel="noopener">ТОП СПОРТС · сайт ↗</a>
+      <a class="other-chip" href="https://www.behance.net/tabassky" target="_blank" rel="noopener">Я/Нанят ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-title">Буду рада обсудить любой из кейсов подробнее.</div>
+    <div class="contact-row">
+      <a href="mailto:svetkluch@yandex.ru" class="primary">svetkluch@yandex.ru</a>
+      <a href="tel:+79270078721">+7 927 007 87 21</a>
+      <a href="https://t.me/tabas_ska" target="_blank" rel="noopener">Telegram · @tabas_ska</a>
+      <a href="https://www.linkedin.com/in/светлана-ключникова-3a696b235/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.behance.net/tabassky" target="_blank" rel="noopener">Behance</a>
+    </div>
+    <div class="foot-meta">Светлана Ключникова — Senior Product Designer</div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('casesMenu');
+    if (!menu) return;
+    if (!menu.contains(e.target)) menu.classList.remove('open');
+    else if (e.target.tagName === 'A') menu.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
