@@ -116,6 +116,22 @@
     .impact-num{font-size:32px;}
   }
 </style>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBVJD9ZRES"></script>
+<script>
+  // Исключение своих заходов: откройте сайт один раз со ссылкой ?me=1 (вернуть учёт — ?me=0)
+  try {
+    var q = new URLSearchParams(location.search).get('me');
+    if (q === '1') localStorage.setItem('no_ga', '1');
+    if (q === '0') localStorage.removeItem('no_ga');
+    if (localStorage.getItem('no_ga') === '1') window['ga-disable-G-JBVJD9ZRES'] = true;
+  } catch (e) {}
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JBVJD9ZRES');
+</script>
+<!-- /Google Analytics 4 -->
 </head>
 <body>
 
@@ -225,9 +241,9 @@
     </div>
 
     <div class="screen-grid">
-        <div class="screen-item"><img src="images/debts-main.jpg" alt="Главный экран с виджетом долга"><div class="screen-caption">Главный экран с виджетом долга</div></div>
-        <div class="screen-item"><img src="images/debts-list.jpg" alt="Список активных задолженностей"><div class="screen-caption">Список активных задолженностей</div></div>
-        <div class="screen-item"><img src="images/debts-qr.jpg" alt="Оплата по QR-коду"><div class="screen-caption">Оплата по QR-коду</div></div>
+        <div class="screen-item"><img src="images/debts-main.png" alt="Главный экран с виджетом долга"><div class="screen-caption">Главный экран с виджетом долга</div></div>
+        <div class="screen-item"><img src="images/debts-list.png" alt="Список активных задолженностей"><div class="screen-caption">Список активных задолженностей</div></div>
+        <div class="screen-item"><img src="images/debts-qr.png" alt="Оплата по QR-коду"><div class="screen-caption">Оплата по QR-коду</div></div>
     </div>
 
     <div class="case-block">
@@ -308,7 +324,7 @@
       <div class="meta-item"><div class="meta-label">год</div><div class="meta-value">2026</div></div>
       <div class="meta-item"><div class="meta-label">платформа</div><div class="meta-value">Web + мобильное приложение</div></div>
     </div>
-    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/sheets-hero.jpg" style="width:100%; display:block;" alt="Электронные ведомости — десктоп и мобильная адаптация"></div>
+    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/sheets-hero.png" style="width:100%; display:block;" alt="Электронные ведомости — десктоп и мобильная адаптация"></div>
     <div class="case-block">
       <div class="case-block-label">Проблема</div>
       <ul class="hmw-list">
@@ -342,7 +358,7 @@
       <div class="meta-item"><div class="meta-label">год</div><div class="meta-value">2026</div></div>
       <div class="meta-item"><div class="meta-label">платформа</div><div class="meta-value">Мобильное приложение</div></div>
     </div>
-    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/booking-hero.jpg" style="width:100%; display:block;" alt="Бронирование аудиторий — флоу подбора и заявки"></div>
+    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/booking-hero.png" style="width:100%; display:block;" alt="Бронирование аудиторий — флоу подбора и заявки"></div>
     <div class="case-block">
       <div class="case-block-label">Проблема</div>
       <ul class="hmw-list">
@@ -379,7 +395,7 @@
       <div class="meta-item"><div class="meta-label">год</div><div class="meta-value">2026</div></div>
       <div class="meta-item"><div class="meta-label">платформа</div><div class="meta-value">Мобильное приложение</div></div>
     </div>
-    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/employer-hero.jpg" style="width:100%; display:block;" alt="ЛК работодателя — возможности, главная, вакансии"></div>
+    <div style="border-radius:14px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line); background:var(--surface);"><img src="images/employer-hero.png" style="width:100%; display:block;" alt="ЛК работодателя — возможности, главная, вакансии"></div>
     <div class="case-block">
       <div class="case-block-label">Проблема</div>
       <ul class="hmw-list">
@@ -478,5 +494,34 @@
   });
 </script>
 
+<script>
+/* Аналитика портфолио: клики по контактам и просмотр кейсов */
+(function(){
+  function track(name, params){ try{ if(window.gtag) gtag('event', name, params); }catch(e){} }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href]'); if(!a) return;
+    var h = a.getAttribute('href'), ch = null;
+    if (h.indexOf('t.me')>-1) ch='telegram';
+    else if (h.indexOf('mailto:')===0) ch='email';
+    else if (h.indexOf('tel:')===0) ch='phone';
+    else if (h.indexOf('linkedin')>-1) ch='linkedin';
+    else if (h.indexOf('behance')>-1) ch='behance';
+    else if (h.indexOf('dribbble')>-1) ch='dribbble';
+    else if (h.indexOf('topsports')>-1) ch='topsports';
+    if (ch) track('contact_click', {channel: ch, location: a.closest('nav') ? 'nav' : a.closest('footer') ? 'footer' : a.closest('.intro') ? 'intro' : 'other'});
+    else if (h.charAt(0)==='#' && h.length>1) track('case_menu_click', {case_id: h.slice(1)});
+  });
+  if ('IntersectionObserver' in window) {
+    var seen = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var id = en.target.id;
+        if (en.isIntersecting && !seen[id]) { seen[id]=1; track('case_view', {case_id: id}); io.unobserve(en.target); }
+      });
+    }, {threshold: 0.35});
+    document.querySelectorAll('section.case[id]').forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
 </body>
 </html>
