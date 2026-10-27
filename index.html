@@ -52,7 +52,21 @@
   .cases-dropdown a:hover{background:var(--surface); color:var(--ink);}
   @media (max-width:640px){.cases-trigger span.label{display:none;}}
 
-  .intro{padding:72px 0 60px;}
+  .intro{padding:56px 0 48px;}
+  .feat-label{font-family:'IBM Plex Mono'; font-size:12px; color:var(--muted); letter-spacing:0.04em; text-transform:uppercase; margin:48px 0 14px;}
+  .feat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .feat{display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden; transition:border-color .15s ease, transform .15s ease;}
+  .feat:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .feat-img{aspect-ratio:16/10; background:var(--surface2); overflow:hidden; display:flex; align-items:center; justify-content:center;}
+  .feat-img img{width:100%; height:100%; object-fit:cover; object-position:top; display:block;}
+  .feat-body{padding:14px 16px 16px;}
+  .feat-ctx{font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--accent); margin-bottom:6px;}
+  .feat-title{font-weight:700; font-size:16px; margin-bottom:4px;}
+  .feat-text{font-size:13px; color:var(--muted); line-height:1.45;}
+  .feat-more{margin-top:16px; font-size:13.5px; color:var(--muted);}
+  .feat-more a{color:var(--ink); border-bottom:1px solid var(--line);}
+  .feat-more a:hover{color:var(--accent); border-color:var(--accent);}
+  @media (max-width:760px){.feat-grid{grid-template-columns:1fr;} .feat-img{aspect-ratio:16/7;} h1{font-size:32px;}}
   .pill{display:inline-block; font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--accent); background:var(--accent-dim); padding:6px 14px; border-radius:100px; margin-bottom:24px; border:1px solid rgba(34,211,238,0.25);}
   h1{font-weight:800; font-size:42px; line-height:1.25; max-width:680px; margin-bottom:22px; letter-spacing:-0.015em;}
   .intro p{font-size:16px; color:var(--muted); max-width:560px; margin-bottom:8px;}
@@ -160,16 +174,31 @@
 
 <section class="intro">
   <div class="wrap">
-    <span class="pill">Senior Product Designer</span>
-    <h1>Продуктовый дизайнер с фокусом на комплексные системы и данные.</h1>
-    <p>8 лет в B2B и B2C. Веду дизайн-направление университетской платформы масштаба Госуслуг — от исследования до дизайн-ревью готовой реализации.</p>
-    <p>Ниже — семь кейсов, которые лучше всего показывают, как я работаю.</p>
+    <span class="pill">Senior Product Designer · Самара</span>
+    <h1>Проектирую сложные сервисы так, чтобы ими было просто пользоваться.</h1>
+    <p>8 лет в B2B и B2C. Веду дизайн университетской платформы масштаба Госуслуг: от исследования и сложных процессов до дизайн-ревью готовой реализации.</p>
     <div class="contact-row">
-      <a href="mailto:svetkluch@yandex.ru" class="primary">svetkluch@yandex.ru</a>
-      <a href="tel:+79270078721">+7 927 007 87 21</a>
-      <a href="https://t.me/tabas_ska" target="_blank" rel="noopener">Telegram · @tabas_ska</a>
+      <a href="https://t.me/tabas_ska" target="_blank" rel="noopener" class="primary">Написать в Telegram</a>
+      <a href="mailto:svetkluch@yandex.ru">svetkluch@yandex.ru</a>
       <a href="https://www.behance.net/tabassky" target="_blank" rel="noopener">Behance</a>
     </div>
+
+    <div class="feat-label">Начните с этих кейсов</div>
+    <div class="feat-grid">
+      <a class="feat" href="#trips">
+        <div class="feat-img"><img src="images/trips-list-v3.png" alt="" loading="lazy"></div>
+        <div class="feat-body"><div class="feat-ctx">ЛК сотрудника</div><div class="feat-title">Командировки</div><div class="feat-text">От заявки до закрывающих документов — полностью онлайн</div></div>
+      </a>
+      <a class="feat" href="#debts">
+        <div class="feat-img"><img src="images/debts-main.png" alt="" loading="lazy"></div>
+        <div class="feat-body"><div class="feat-ctx">Финансы</div><div class="feat-title">Взаиморасчёты</div><div class="feat-text">Сложные взаиморасчёты в понятном интерфейсе</div></div>
+      </a>
+      <a class="feat" href="#sheets">
+        <div class="feat-img"><img src="images/sheets-hero.png" alt="" loading="lazy"></div>
+        <div class="feat-body"><div class="feat-ctx">Учебный процесс</div><div class="feat-title">Электронные ведомости</div><div class="feat-text">Десктоп и мобильная адаптация</div></div>
+      </a>
+    </div>
+    <div class="feat-more">Ещё кейсы: <a href="#energy">Энергоресурсы</a> · <a href="#booking">Бронирование</a> · <a href="#employer">ЛК работодателя</a> · <a href="#topsports">Top Sports</a></div>
   </div>
 </section>
 
