@@ -144,6 +144,24 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-JBVJD9ZRES');
+
+  // SPA-трекинг: кейсы открываются по якорям (#trips, #energy, ...) без перезагрузки страницы,
+  // поэтому при смене hash отправляем виртуальный page_view, чтобы GA видел переходы между кейсами.
+  (function(){
+    var last = location.pathname + location.hash;
+    function sendPageView(){
+      var path = location.pathname + location.hash;
+      if (path === last) return;
+      last = path;
+      gtag('event', 'page_view', {
+        page_location: location.href,
+        page_path: path,
+        page_title: document.title
+      });
+    }
+    window.addEventListener('hashchange', sendPageView);
+    window.addEventListener('popstate', sendPageView);
+  })();
 </script>
 <!-- /Google Analytics 4 -->
 </head>
